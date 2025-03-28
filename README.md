@@ -1,55 +1,61 @@
 # Sea State Forecasting with Machine Learning & Deep Learning
-This project focuses on forecasting marine wave height (WaveHeight) using time series models trained on a high-resolution dataset spanning almost two decades of hourly oceanographic data. The goal is to predict the next 24 hours of wave height using the previous 24 hours of all available features.
 
-🗂️ Dataset Overview
-Source: Internal Marine Dataset (confidential)
+Forecasting sea state (wave height) is critical for marine operations, coastal monitoring, and climate analysis. This project develops and compares machine learning and deep learning models to predict the next 24 hours of wave height using the previous 24 hours of all features, based on nearly two decades of hourly data.
 
-Total Samples: 122,230 hourly entries
+---
 
-Time Range: 2006-09-25 to 2025-03-28
+## Quick Overview
 
-Resolution: 1-hour
+| Setting         | Details                                  |
+|----------------|-------------------------------------------|
+| Forecast Target | `WaveHeight` (next 24 hours)             |
+| Input           | Last 24 hours of all features            |
+| Data Range      | 2006-09-25 to 2025-03-28 (hourly)         |
+| Missing Years   | 2008, 2009 (excluded due to gaps)        |
+| Imputation      | Time-based linear interpolation           |
+| Models Tested   | XGBoost, Random Forest, LSTM, TCN        |
+| Validation      | 2022, 2023, 2024, 2025                   |
 
-Missing Years: 2008 and 2009 (excluded due to excessive missing data)
+---
 
-Preprocessing:
+## Modeling Approach
 
-Time-based linear interpolation for missing values (method='time')
+We frame the task as a multi-step direct forecast: given 24 hours of past data, predict 24 consecutive future wave height values.
 
-Sliding context windows of fixed size for sequence modeling
+### Context Window Strategy
 
-Validation Split:
+- Overlapping context windows (stride < window size) clearly improve performance.
+- Larger context windows help LSTM and TCN, but have little impact on XGBoost and RF.
 
-Years 2022, 2023, 2024, 2025
+---
 
-🔍 Modeling Approach
-✅ Problem Framing
-Input: Past 24 hours of all features
+## Model Performance Summary
 
-Target: Next 24 hours of WaveHeight
+![Model Comparison Plot](assets/model_comparison_plot.png)
 
-Multi-step, direct forecast
+*Performance comparison of models (MAE across prediction horizons).*
 
-🧠 Models Used
-Category	Models
-Traditional ML	XGBoost, Random Forest
-Deep Learning	LSTM, TCN (Temporal Convolutional Network)
-📊 Key Findings
-Context Windows:
+- XGBoost performs best on short-term horizons (first 10 hours).
+- LSTM and TCN outperform in the longer term due to smoother forecasts.
 
-Overlapping context windows (with step < window size) clearly outperform disjoint or full overlap.
+---
 
-Larger context windows help LSTM and TCN, but don't impact XGBoost/RF significantly.
+## Output Examples
 
-Performance:
+| Model      | Prediction Characteristics |
+|------------|----------------------------|
+| XGBoost    | Sharp, responsive, noisy   |
+| LSTM/TCN   | Smoother, stable forecasts |
 
-XGBoost shines in short-term forecasts (first 10 hours) due to its reactivity.
+![Forecast Samples](assets/forecast_samples.png)
 
-DL models perform better in the longer-term thanks to their smoother forecast profiles.
+*Example predictions for different models. Ground truth in black.*
 
-Output Characteristics:
+---
 
-Deep learning forecasts are smooth and stable.
+## Evaluation Strategy
 
-XGBoost predictions are noisier, which helps in the short term but hurts long-term accuracy.
+- **Train/Test Split**: Training on 2006–2021, validation on 2022–2025
+- **Metrics**: MAE per forecast horizon (1h to 24h), RMSE, visual plots
+- **Frameworks**: PyTorch (LSTM, TCN), scikit-learn (RF), XGBoost
 
