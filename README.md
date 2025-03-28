@@ -59,3 +59,19 @@ We frame the task as a multi-step direct forecast: given 24 hours of past data, 
 - **Metrics**: MAE per forecast horizon (1h to 24h), RMSE, visual plots
 - **Frameworks**: PyTorch (LSTM, TCN), scikit-learn (RF), XGBoost
 
+---
+
+## References
+
+- Bai, S., Kolter, J. Z., & Koltun, V. (2018). [An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling](https://arxiv.org/abs/1803.01271)
+- Brownlee, J. (2017). [Deep Learning for Time Series Forecasting](https://machinelearningmastery.com/deep-learning-for-time-series-forecasting/)
+- Hochreiter, S., & Schmidhuber, J. (1997). [Long short-term memory](https://www.bioinf.jku.at/publications/older/2604.pdf)
+
+---
+
+## Author
+
+**Colin MININI**  
+CentraleSupélec — MSc AI (Gap Year)  
+Currently based in UCD, Ireland  
+[colin.minini@student-cs.fr]
