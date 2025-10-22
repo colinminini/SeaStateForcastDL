@@ -18,6 +18,36 @@ This project develops and compares machine learning and deep learning models to 
 
 ---
 
+## Running the models from the command line
+
+The exploratory notebook has been distilled into an executable script
+`train_seastate.py`. The script reproduces the univariate forecasting
+pipeline (336 hours of context → 12 hour horizon) and trains the LSTM,
+TCN and XGBoost baselines in a reproducible way.
+
+```bash
+python train_seastate.py \
+  --dataset m6_buoy \
+  --context 336 \
+  --horizon 12 \
+  --models lstm tcn xgboost \
+  --output metrics.json
+```
+
+Important flags:
+
+- `--data-path` – provide a local CSV/JSON dataset instead of
+  downloading from the Marine Institute ERDDAP endpoint.
+- `--features` – include additional predictor columns (the target column
+  is always retained).
+- `--max-windows` – cap the number of generated sliding windows for
+  quick experiments.
+
+The resulting metrics are printed to the console and, when `--output` is
+specified, written to a JSON file.
+
+---
+
 ## Modeling Approach
 
 We frame the task as a multi-step direct forecast: given 24 hours of past data, predict 24 consecutive future wave height values.
