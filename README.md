@@ -1,6 +1,6 @@
 # 🌊 Sea State Forecasting with Deep Learning and Hybrid Residual Modeling
 **Colin Minini — CentraleSupélec & University College Dublin**  
-**February – July 2025 — HIGHWAVE Project (Marine Institute Ireland)**  
+**February – July 2025 — HIGHWAVE Project**  
 
 ---
 
@@ -24,9 +24,13 @@ This work lies at the intersection of **scientific machine learning, time-series
 ## 🧩 Project Structure
 
 ├── data # Datasets created processed and used for the project
+
 ├── figures/ # All result plots (below)
+
 ├── notebooks # The experimenting notebooks
+
 └── Sea_State_Forecast_Project_Report.pdf # Detailed technical report
+
 ├── Sea_State_Forecasting_with_Deep_Learning_and_Hybrid_Residual_Modeling # Main research notebook
 
 
