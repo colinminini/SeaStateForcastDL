@@ -85,7 +85,6 @@ SegRNN and PatchTST show the lowest errors and best temporal consistency.
 | SegRNN (uni) | 0.251 | 0.122 | 1.6 M | 5.98 |
 | SegRNN (multi) | **0.227** | **0.187** | 1.6 M | 5.98 |
 
-![Weather Model Comparison](figures/Weather_Model_Comparison.png)
 ![Weather Forecast Example](figures/Weather_One_Sample_with_context.png)
 ![Weather Forecast Output](figures/Weather_One_Sample_just_Output.png)
 
