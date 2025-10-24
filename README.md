@@ -48,18 +48,21 @@ No installation or setup is required — this repository consists of a **single,
 ---
 
 ## Methodology
-### 1. Forecasting Formulation
-For each 24-hour horizon H, models use the past L = 336 hours of data to predict the next 24 hours:
-\[
-f_\theta(X_{t-L:t}) \approx Y_{t+1:t+H}
-\]
+### 1. Forecasting formulation
 
-In the **hybrid setup**, models learn residuals:
-\[
-r_\theta(R_t) \approx Y - \hat{Y}_{num}
-\quad\Rightarrow\quad
-\hat{Y} = \hat{Y}_{num} + r_\theta(R_t)
-\]
+For each 24-hour horizon \(H\), models use the past \(L = 336\) hours to predict the next 24 hours:
+
+$$
+f_\theta\!\left(X_{t-L:t}\right) \approx Y_{t+1:t+H}
+$$
+
+In the **hybrid** setup, models learn residuals:
+
+$$
+r_\theta(R_t) \approx Y - \hat{Y}_{\text{num}}, \qquad
+\hat{Y} = \hat{Y}_{\text{num}} + r_\theta(R_t)
+$$
+
 
 ### 2. Architectures Evaluated
 - **LSTM** – Recurrent baseline for temporal dependencies  
