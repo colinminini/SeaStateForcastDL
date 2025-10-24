@@ -53,7 +53,7 @@ No installation or setup is required — this repository consists of a **single,
 For each 24-hour horizon \(H\), models use the past \(L = 336\) hours to predict the next 24 hours:
 
 $$
-f_\theta\!\left(X_{t-L:t}\right) \approx Y_{t+1:t+H}
+f_\theta\left(X_{t-L:t}\right) \approx Y_{t+1:t+H}
 $$
 
 In the **hybrid** setup, models learn residuals:
