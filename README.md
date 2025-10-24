@@ -109,7 +109,7 @@ Hybrid models learn to correct the bias of the best NWP forecasts (e.g., NOAA da
 | PatchTST (uni) | 0.454 | 0.371 | 406 K | 1.64 |
 | XGBoost | 0.466 | 0.389 | 100 | 16.3 |
 
-![Residual Forecast Example](figures/Residuals_One_Sample_with_context.png)
+![Residual Forecast Example](figures/Residuals_One_sample_with_context.png)
 
 Hybrid SegRNN improves upon the base NOAA forecast, demonstrating that **deep learning can act as a statistical correction layer** for physics-based ocean models.
 
