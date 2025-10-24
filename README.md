@@ -1,10 +1,10 @@
-# 🌊 Sea State Forecasting with Deep Learning and Hybrid Residual Modeling
+# Sea State Forecasting with Deep Learning and Hybrid Residual Modeling
 **Colin Minini — CentraleSupélec & University College Dublin**  
 **February – July 2025 — HIGHWAVE Project**  
 
 ---
 
-### 🧭 Overview
+### Overview
 This research project explores **hybrid deep learning methods for forecasting ocean wave conditions** — in particular, the *significant wave height* (SWH) recorded by the **M6 buoy** off the west coast of Ireland.  
 While physics-based numerical weather prediction (NWP) models provide reliable large-scale forecasts, they often exhibit **systematic local biases** and limited short-term accuracy.  
 Here, we design deep neural networks that **learn the residuals between numerical forecasts and real observations**, effectively correcting physical model outputs through data-driven learning.
@@ -13,7 +13,7 @@ This work lies at the intersection of **scientific machine learning, time-series
 
 ---
 
-## 🚀 Goals & Contributions
+## Goals & Contributions
 - **Reimplement and benchmark** state-of-the-art long-term time-series architectures (LSTM, TCN, PatchTST, SegRNN) on benchmark and real datasets.  
 - **Build a robust forecasting pipeline** handling missing data and contiguous sliding-window sampling for marine time series.  
 - **Propose a hybrid residual-learning framework** combining numerical forecasts (NOAA, ICON, MFWAM etc.) with deep learning.  
@@ -21,7 +21,7 @@ This work lies at the intersection of **scientific machine learning, time-series
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 
 ├── data # Datasets created processed and used for the project
 
@@ -38,7 +38,7 @@ No installation or setup is required — this repository consists of a **single,
 
 ---
 
-## 📊 Datasets
+## Datasets
 | Dataset | Source | Resolution | Purpose |
 |----------|---------|-------------|----------|
 | **weather.csv** | Public meteorological dataset | 10 min | Model benchmarking and architecture testing |
@@ -47,7 +47,7 @@ No installation or setup is required — this repository consists of a **single,
 
 ---
 
-## 🧠 Methodology
+## Methodology
 ### 1. Forecasting Formulation
 For each 24-hour horizon H, models use the past L = 336 hours of data to predict the next 24 hours:
 \[
@@ -70,9 +70,9 @@ r_\theta(R_t) \approx Y - \hat{Y}_{num}
 
 ---
 
-## 📈 Results
+## Results
 
-### 🔹 Benchmark (weather.csv)
+### Benchmark (weather.csv)
 Multivariate long-range forecasting reproduces published SOTA results.  
 SegRNN and PatchTST show the lowest errors and best temporal consistency.
 
@@ -90,7 +90,7 @@ SegRNN and PatchTST show the lowest errors and best temporal consistency.
 
 ---
 
-### 🔹 Real-World M6 Forecasting
+### Real-World M6 Forecasting
 Univariate deep learning models predict 24-hour SWH evolution from past observations.  
 SegRNN consistently provides the most stable and accurate forecasts.
 
@@ -98,7 +98,7 @@ SegRNN consistently provides the most stable and accurate forecasts.
 
 ---
 
-### 🔹 Hybrid Residual Learning
+### Hybrid Residual Learning
 Hybrid models learn to correct the bias of the best NWP forecasts (e.g., NOAA day1).
 
 | Model | MAE | MSE | Parameters | Train Time (s) |
@@ -116,7 +116,7 @@ Hybrid SegRNN improves upon the base NOAA forecast, demonstrating that **deep le
 
 ---
 
-## 💡 Key Insights
+## Key Insights
 - **SegRNN** consistently achieved the best MAE/MSE trade-off across datasets.  
 - **Residual learning** improved physical forecasts without discarding physical priors.  
 - **Multivariate pretraining** enhanced univariate forecasting through shared-weight generalization.  
@@ -124,7 +124,7 @@ Hybrid SegRNN improves upon the base NOAA forecast, demonstrating that **deep le
 
 ---
 
-## 🔭 Future Directions
+## Future Directions
 - Extend residual learning to multiple buoys with **spatial models (Graph NNs)**.  
 - Introduce **uncertainty quantification** (e.g., Bayesian DL, quantile regression).  
 - Explore **self-supervised pretraining** on large-scale meteorological archives.  
@@ -132,8 +132,8 @@ Hybrid SegRNN improves upon the base NOAA forecast, demonstrating that **deep le
 
 ---
 
-## 🧾 References
-- Lin S., Lin W., Wu W., Zhao F., Mo R., Zhang H. (2024). *Segment Recurrent Neural Network for Long-Term Time Series Forecasting.*  
+## References
+- Lin S., Lin W., Wu W., Zhao F., Mo R., Zhang H. (2024). *Segment Recurrent Neural Network for Long-Term Time Series Forecasting.* (https://arxiv.org/abs/2308.11200)
 - Nie Y., Nguyen N. H., Sinthong P., Kalagnanam J. (2023). *A Time Series is Worth 64 Words: Long-Term Forecasting with Transformers.*  
 - Kong Y., Wang Z., Nie Y., Zhou T., Zohren S., Liang Y., Sun P., Wen Q. (2023). *Unlocking the Power of LSTM for Long-Term Time Series Forecasting.*  
 - Wen Q., Zhou T., Zhang C., Chen W., Ma Z., Yan J., Sun L. (2023). *Transformers in Time Series: A Survey.*  
