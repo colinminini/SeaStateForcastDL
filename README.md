@@ -87,14 +87,6 @@ SegRNN and PatchTST show the lowest errors and best temporal consistency.
 
 ---
 
-### Real-World M6 Forecasting
-Univariate deep learning models predict 24-hour SWH evolution from past observations.  
-SegRNN consistently provides the most stable and accurate forecasts.
-
-*(Plots shown in the notebook and report.)*
-
----
-
 ### Hybrid Residual Learning
 
 Physics-based numerical forecasts (e.g., NOAA, ICON, StormGlass) provide essential large-scale information but exhibit **systematic local biases** at the M6 buoy scale.  
